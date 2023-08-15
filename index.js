@@ -1,30 +1,13 @@
-const gridItems = document.querySelectorAll('.picture-box');
-const container = document.querySelector('.container');
+const flexItems = document.getElementsByClassName('picture-box'); //get the list of images 
+let rememberFlex = flexItems[0]; // Set the first element that is expanded
 
-// gridItems.forEach((item, index) => {
-//   item.addEventListener('click', () => {
-//     let newColumns = '';
-//     for (let i = 0; i < 5; i++) {
-//       if (i === index) {
-//         newColumns += ' 70%';
-//       } else {
-//         newColumns += ' 5%';
-//       }
-//     }
-//     container.style.gridTemplateColumns = newColumns;
-//   });
-// });
-
-const flexItems = document.getElementsByClassName('picture-box');
-let rememberFlex = flexItems[0]; // Set the initially expanded element
-
-for (let i = 0; i < flexItems.length; i++) {
-    let flexItem = flexItems[i];
-    flexItem.addEventListener('click', () => {
-        if (rememberFlex !== flexItem) {
-            rememberFlex.style.flex = '1'; // Reset the previously expanded element
-            flexItem.style.flex = '15';    // Expand the clicked element
-            rememberFlex = flexItem;       // Update the rememberFlex variable
+for (let i = 0; i < flexItems.length; i++) { // iterate through the list of images 
+    let flexItem = flexItems[i]; 
+    flexItem.addEventListener('click', () => { // add event listener to each image 
+        if (rememberFlex !== flexItem) {   // condition to check if user is selecting a new image on click
+            rememberFlex.style.flex = '1'; // update value for not selected image
+            flexItem.style.flex = '15';    // update value for the selected image
+            rememberFlex = flexItem;       // update the rememberFlex variable so that we keep track of the expanded image
         }
     });
 }
